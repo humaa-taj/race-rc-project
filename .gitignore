@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pkl
+*.npz
+*.npy
+*.csv
+*.png
+.env
+venv/
+.venv/
+.idea/
+.vscode/
+models/
+data/processed/

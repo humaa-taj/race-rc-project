@@ -1,0 +1,221 @@
+================================================================================
+PHASE 1 DATA RESTRUCTURING - STATISTICS
+================================================================================
+
+================================================================================
+DATASET A: QUESTION GENERATION
+================================================================================
+Structure: Input (article + correct_answer) → Output (question)
+
+TRAIN split:
+  Total rows: 31832
+  Avg article length: 1613 chars
+  Avg answer length: 36 chars
+  Avg question length: 52 chars
+
+DEV split:
+  Total rows: 3979
+  Avg article length: 1605 chars
+  Avg answer length: 36 chars
+  Avg question length: 53 chars
+
+TEST split:
+  Total rows: 3980
+  Avg article length: 1601 chars
+  Avg answer length: 36 chars
+  Avg question length: 52 chars
+
+================================================================================
+DATASET B: DISTRACTOR GENERATION
+================================================================================
+Structure: Input (article + question + correct_answer) → Output (3 wrong options)
+
+TRAIN split:
+  Total rows: 31832
+  Avg article length: 1613 chars
+  Avg question length: 52 chars
+  Avg correct answer length: 36 chars
+  Avg distractor 1 length: 33 chars
+  Avg distractor 2 length: 35 chars
+  Avg distractor 3 length: 36 chars
+
+DEV split:
+  Total rows: 3979
+  Avg article length: 1605 chars
+  Avg question length: 53 chars
+  Avg correct answer length: 36 chars
+  Avg distractor 1 length: 33 chars
+  Avg distractor 2 length: 34 chars
+  Avg distractor 3 length: 36 chars
+
+TEST split:
+  Total rows: 3980
+  Avg article length: 1601 chars
+  Avg question length: 52 chars
+  Avg correct answer length: 36 chars
+  Avg distractor 1 length: 33 chars
+  Avg distractor 2 length: 34 chars
+  Avg distractor 3 length: 36 chars
+
+================================================================================
+DATASET C: HINT GENERATION
+================================================================================
+Structure: Input (article + question + correct_answer) → Output (top 3 hint sentences)
+
+TRAIN split:
+  Total rows: 31832
+  Hint 1: 31813/31832 real hints (default padded: 19), avg length: 116 chars
+  Hint 2: 31752/31832 real hints (default padded: 80), avg length: 111 chars
+  Hint 3: 31671/31832 real hints (default padded: 161), avg length: 105 chars
+
+DEV split:
+  Total rows: 3979
+  Hint 1: 3976/3979 real hints (default padded: 3), avg length: 117 chars
+  Hint 2: 3970/3979 real hints (default padded: 9), avg length: 110 chars
+  Hint 3: 3963/3979 real hints (default padded: 16), avg length: 106 chars
+
+TEST split:
+  Total rows: 3980
+  Hint 1: 3976/3980 real hints (default padded: 4), avg length: 115 chars
+  Hint 2: 3965/3980 real hints (default padded: 15), avg length: 111 chars
+  Hint 3: 3953/3980 real hints (default padded: 27), avg length: 105 chars
+
+================================================================================
+SAMPLE EXAMPLES FROM TRAINING SPLIT
+================================================================================
+
+--- DATASET A: QUESTION GENERATION (5 examples) ---
+
+Example 1:
+  Article (first 150 chars): when siva kalyan was born, his backbone was deformed resulting in a lifelong difficulty in walking. but that hasn't stopped the nine-year-old from bec...
+  Correct Answer: he is really good at mathematics.
+  Generated Question: what can we learn about siva?
+
+Example 2:
+  Article (first 150 chars): good time is a program on abc radio. jim green is an announcer for the program. most of the girls and boys like the program. they also like jim green....
+  Correct Answer: both a and b
+  Generated Question: what do some of the young people do every day?
+
+Example 3:
+  Article (first 150 chars): 5 holiday gifts by liz kennedy and janice lieberman your family's life story in print? priceless. an appetizer plate that holds a wine glass?genius. r...
+  Correct Answer: 192.00
+  Generated Question: how much would it cost to buy 3 eye view cameras and a nike ipod sports kit?
+
+Example 4:
+  Article (first 150 chars): one day, a young man visited a small farm in the countryside. as he got closer to the farm, he saw many chickens and an eagle playing together. he the...
+  Correct Answer: because he wanted to prove something to the farmer.
+  Generated Question: . why did the young man pull that bird out?
+
+Example 5:
+  Article (first 150 chars): is there clear boundary between science and the liberal arts as a major for college students? the question of whether our government should promote sc...
+  Correct Answer: their chances of getting a good job.
+  Generated Question: what is the main concern of students when they choose a major?
+
+--- DATASET B: DISTRACTOR GENERATION (5 examples) ---
+
+Example 1:
+  Article (first 150 chars): when siva kalyan was born, his backbone was deformed resulting in a lifelong difficulty in walking. but that hasn't stopped the nine-year-old from bec...
+  Question: what can we learn about siva?
+  Correct Answer: he is really good at mathematics.
+  Distractor 1: he has no friends to play with.
+  Distractor 2: he is not allowed to play video games.
+  Distractor 3: he learned swimming from his mother.
+
+Example 2:
+  Article (first 150 chars): good time is a program on abc radio. jim green is an announcer for the program. most of the girls and boys like the program. they also like jim green....
+  Question: what do some of the young people do every day?
+  Correct Answer: both a and b
+  Distractor 1: call jim
+  Distractor 2: write to jim
+  Distractor 3: chat on line
+
+Example 3:
+  Article (first 150 chars): 5 holiday gifts by liz kennedy and janice lieberman your family's life story in print? priceless. an appetizer plate that holds a wine glass?genius. r...
+  Question: how much would it cost to buy 3 eye view cameras and a nike ipod sports kit?
+  Correct Answer: 192.00
+  Distractor 1: 208.50
+  Distractor 2: 210.00
+  Distractor 3: 190.50
+
+Example 4:
+  Article (first 150 chars): one day, a young man visited a small farm in the countryside. as he got closer to the farm, he saw many chickens and an eagle playing together. he the...
+  Question: . why did the young man pull that bird out?
+  Correct Answer: because he wanted to prove something to the farmer.
+  Distractor 1: because he wanted to kill the bird.
+  Distractor 2: because the farmer asked him to do it.
+  Distractor 3: because the farmer wanted the young man to throw the bird away.
+
+Example 5:
+  Article (first 150 chars): is there clear boundary between science and the liberal arts as a major for college students? the question of whether our government should promote sc...
+  Question: what is the main concern of students when they choose a major?
+  Correct Answer: their chances of getting a good job.
+  Distractor 1: the academic value of the courses.
+  Distractor 2: their interest in relevant subjects.
+  Distractor 3: the quality of education to receive.
+
+--- DATASET C: HINT GENERATION (5 examples) ---
+
+Example 1:
+  Article (first 150 chars): when siva kalyan was born, his backbone was deformed resulting in a lifelong difficulty in walking. but that hasn't stopped the nine-year-old from bec...
+  Question: what can we learn about siva?
+  Correct Answer: he is really good at mathematics.
+  Hint 1: siva focus his energies on his strength, which is mathematics
+  Hint 2: thanks to his mother who is a singer, siva has also learned music and even won the first and second prize at two competitions
+  Hint 3: until he was three-and-a-half years old, siva could not even crawl
+  Overlap Scores: [0.5, 0.5, 0.333]
+
+Example 2:
+  Article (first 150 chars): good time is a program on abc radio. jim green is an announcer for the program. most of the girls and boys like the program. they also like jim green....
+  Question: what do some of the young people do every day?
+  Correct Answer: both a and b
+  Hint 1: most of the girls and boys like the program
+  Hint 2: some of them often make phone calls to him and thank him for his work
+  Hint 3: there are lots of letters to him every day, too
+  Overlap Scores: [0.333, 0.333, 0.333]
+
+Example 3:
+  Article (first 150 chars): 5 holiday gifts by liz kennedy and janice lieberman your family's life story in print? priceless. an appetizer plate that holds a wine glass?genius. r...
+  Question: how much would it cost to buy 3 eye view cameras and a nike ipod sports kit?
+  Correct Answer: 192.00
+  Hint 1: com for the athlete find a new level of motivation with the nike ipod sports kit
+  Hint 2: listen to your favorite music while nike records how far you've run, how many calories you've burned, and your personal best times
+  Hint 3: nike ipod sports kit 30 5 discount for 2 at www
+  Overlap Scores: [0.294, 0.235, 0.235]
+
+Example 4:
+  Article (first 150 chars): one day, a young man visited a small farm in the countryside. as he got closer to the farm, he saw many chickens and an eagle playing together. he the...
+  Question: . why did the young man pull that bird out?
+  Correct Answer: because he wanted to prove something to the farmer.
+  Hint 1: the young man then pulled that big bird out and climbed a high mountain
+  Hint 2: he then went up to the farm house and talked to the farmer, sir, i was just passing by and i saw that you have many chickens and an eagle
+  Hint 3: he said to the farmer, sir, that is an eagle
+  Overlap Scores: [0.667, 0.556, 0.556]
+
+Example 5:
+  Article (first 150 chars): is there clear boundary between science and the liberal arts as a major for college students? the question of whether our government should promote sc...
+  Question: what is the main concern of students when they choose a major?
+  Correct Answer: their chances of getting a good job.
+  Hint 1: moreover, students should be prepared not just for their first job, but for their 4th and 5th jobs, as there is little reason to doubt that people entering the workforce today will be called upon to play many different roles over the course of their careers
+  Hint 2: is there clear boundary between science and the liberal arts as a major for college students
+  Hint 3: major in a subject designed to get you a job seems the obvious answer to some, though this ignores the fact that many disciplines in the humanities characterized as soft often, in fact, lead to employment and success in the long run
+  Overlap Scores: [0.5, 0.417, 0.333]
+
+================================================================================
+QUALITY CHECKS
+================================================================================
+
+✓ DATASET A: Question Diversity Check
+  Unique questions in train: 23398/31832 (73.5%)
+  → Questions appear CONTEXTUAL (tied to specific articles)
+
+✓ DATASET B: Distractor Validation Check
+  Sample check (10 examples): 10/10 have 3 distinct wrong options
+  → Distractors are DISTINCT from correct answer
+
+✓ DATASET C: Hint Relevance Check
+  Examples with at least 1 real hint: 31813/31832 (99.9%)
+  → Hints use WORD OVERLAP scoring (contextual)
+
+================================================================================
+END OF REPORT
+================================================================================
